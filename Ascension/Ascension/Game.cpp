@@ -101,6 +101,10 @@ void Game::Draw(ascii::Graphics& graphics)
 	renderSurface->drawBorder(' ', ascii::Color::Green, ascii::Color::White);
 	renderSurface->blitString(kTitleCaps, ascii::Color::Black, ascii::Graphics::kBufferWidth / 2 - strlen(kTitleCaps) / 2, 0);
 
+	ascii::Rectangle rect(5, 5, 30, 5);
+	renderSurface->fillRect(rect, ' ', ascii::Color::Green, ascii::Color::White);
+	renderSurface->blitStringMultiline("This is quite a long string. I think I'll have to wrap it to multiple lines to get it to display properly. Now, how do I do that?", ascii::Color::Black, rect);
+
 	graphics.blitSurface(renderSurface, 0, 0);
 
 	delete renderSurface;
