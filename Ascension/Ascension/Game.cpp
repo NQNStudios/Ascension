@@ -4,8 +4,8 @@
 
 #include "Surface.h"
 
-const char* kTitle = "Ascension";
-const char* kTitleCaps = "ASCENSION";
+const char* kWindowTitle = "...";
+const char* kTitle = "ASCENSION";
 
 const int kFPS = 60;
 const int kMaxFrameTime = 5 * 1000 / 60;
@@ -25,7 +25,7 @@ Game::~Game()
 
 void Game::Run()
 {
-	ascii::Graphics graphics(kTitle);
+	ascii::Graphics graphics(kWindowTitle);
 	ascii::Input input;
 
 	mRunning = true;
@@ -96,18 +96,12 @@ void Game::Draw(ascii::Graphics& graphics)
 {
 	graphics.clear();
 
-	ascii::Surface* renderSurface = new ascii::Surface(ascii::Graphics::kBufferWidth, ascii::Graphics::kBufferHeight);
-
-	renderSurface->drawBorder(' ', ascii::Color::Green, ascii::Color::White);
-	renderSurface->blitString(kTitleCaps, ascii::Color::Black, ascii::Graphics::kBufferWidth / 2 - strlen(kTitleCaps) / 2, 0);
+	graphics.drawBorder(' ', ascii::Color::Green, ascii::Color::White);
+	graphics.blitString(kTitle, ascii::Color::Black, ascii::Graphics::kBufferWidth / 2 - strlen(kTitle) / 2, 0);
 
 	ascii::Rectangle rect(5, 5, 30, 5);
-	renderSurface->fillRect(rect, ' ', ascii::Color::Green, ascii::Color::White);
-	renderSurface->blitStringMultiline("This is quite a long string. I think I'll have to wrap it to multiple lines to get it to display properly. Now, how do I do that?", ascii::Color::Black, rect);
-
-	graphics.blitSurface(renderSurface, 0, 0);
-
-	delete renderSurface;
+	graphics.fillRect(rect, ' ', ascii::Color::Green, ascii::Color::White);
+	graphics.blitStringMultiline("This is quite a long string. I think I'll have to wrap it to multiple lines to get it to display properly. Now, how do I do that?", ascii::Color::Black, rect);
 
 	graphics.update();
 }
