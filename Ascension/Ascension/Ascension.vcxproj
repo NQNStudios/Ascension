@@ -66,11 +66,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="flags.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FlagCondition.h" />
+    <ClInclude Include="Flags.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Screen.h" />
+    <ClInclude Include="Text.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ASCIILib\ASCIILib\ASCIILib.vcxproj">

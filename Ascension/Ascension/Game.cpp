@@ -3,6 +3,7 @@
 #include <SDL.h>
 
 #include "Surface.h"
+#include "FlagCondition.h"
 
 const char* kWindowTitle = "...";
 const char* kTitle = "ASCENSION";
@@ -80,16 +81,33 @@ void Game::Quit()
 
 void Game::LoadContent()
 {
-	
+	flags::init();
+
+	Screen* scr = new Screen();
+
+	Text txt("This text should display", FlagCondition(0, 0, 0));
+
+	scr->add(txt);
+
+	txt = Text("This text should not display", FlagCondition(0, 0, 1));
+
+	scr->add(txt);
+
+	txt = Text("This text should display 2 lines down", FlagCondition(1, 0, 0));
+
+	scr->add(txt);
+
+	mScreen.reset(scr);
 }
 
 void Game::Update(int deltaMS)
 {
+	mScreen->update(deltaMS);
 }
 
 void Game::HandleInput(ascii::Input& input)
 {
-	
+	mScreen->handleInput(input);
 }
 
 void Game::Draw(ascii::Graphics& graphics)
@@ -99,8 +117,7 @@ void Game::Draw(ascii::Graphics& graphics)
 	graphics.drawBorder(' ', ascii::Color::Green, ascii::Color::White);
 	graphics.blitString(kTitle, ascii::Color::Black, ascii::Graphics::kBufferWidth / 2 - strlen(kTitle) / 2, 0);
 
-	ascii::Rectangle rect(2, 2, 76, 21);
-	graphics.blitStringMultiline("This is quite a long string. I think I'll have to wrap it to multiple lines to get it to display properly. Now, how do I do that?", ascii::Color::Green, rect);
+	mScreen->draw(graphics);
 
 	graphics.update();
 }

@@ -1,8 +1,10 @@
 #pragma once
 
+#include <memory>
+
 #include "Input.h"
 #include "Graphics.h"
-#include "Camera.h"
+#include "Screen.h"
 
 ///<summary>
 /// Game class for The Fool's Revenge.
@@ -47,5 +49,7 @@ class Game
 		void Draw(ascii::Graphics& graphics);
 
 		bool mRunning;
+
+		std::unique_ptr<Screen> mScreen;
 };
 
