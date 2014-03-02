@@ -99,9 +99,8 @@ void Game::Draw(ascii::Graphics& graphics)
 	graphics.drawBorder(' ', ascii::Color::Green, ascii::Color::White);
 	graphics.blitString(kTitle, ascii::Color::Black, ascii::Graphics::kBufferWidth / 2 - strlen(kTitle) / 2, 0);
 
-	ascii::Rectangle rect(5, 5, 30, 5);
-	graphics.fillRect(rect, ' ', ascii::Color::Green, ascii::Color::White);
-	graphics.blitStringMultiline("This is quite a long string. I think I'll have to wrap it to multiple lines to get it to display properly. Now, how do I do that?", ascii::Color::Black, rect);
+	ascii::Rectangle rect(2, 2, 76, 21);
+	graphics.blitStringMultiline("This is quite a long string. I think I'll have to wrap it to multiple lines to get it to display properly. Now, how do I do that?", ascii::Color::Green, rect);
 
 	graphics.update();
 }
