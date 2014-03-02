@@ -1,3 +1,4 @@
 [submodule "ASCIILib"]
 	path = ASCIILib
-	url = git@github.com:Natman64/ASCIILib.git
+	url = https://github.com/Natman64/ASCIILib
+
