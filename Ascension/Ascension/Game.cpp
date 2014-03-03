@@ -4,6 +4,7 @@
 
 #include "Surface.h"
 #include "FlagCondition.h"
+#include "Flags.h"
 
 const char* kWindowTitle = "...";
 const char* kTitle = "ASCENSION";
@@ -97,11 +98,29 @@ void Game::LoadContent()
 
 	scr->add(txt);
 
-	mScreen.reset(scr);
+	Action act("First action", FlagCondition(0, 0, 0), FlagSet(-1, -1, 0), "room2");
+
+	scr->addAction(act);
+	mScreens["room1"] = scr;
+
+	txt = Text("This text shouuuld display after you hit '1' the first time", FlagCondition(0, 0, 0));
+
+	scr = new Screen();
+	scr->add(txt);
+
+	mScreens["room2"] = scr;
+
+	mScreen.reset(mScreens["room1"]);
 }
 
 void Game::Update(int deltaMS)
 {
+	if (strcmp(flags::getNextRoom(), ""))
+	{
+		mScreen.reset(mScreens[flags::getNextRoom()]);
+		flags::setNextRoom("");
+	}
+
 	mScreen->update(deltaMS);
 }
 

@@ -6,15 +6,18 @@
 #include "Graphics.h"
 
 #include "Text.h"
+#include "Action.h"
 
 class Screen
 {
 	public:
 		void add(Text text);
+		void addAction(Action action);
 
 		void update(int deltaMS);
 		void handleInput(ascii::Input& input);
 		void draw(ascii::Graphics& graphics);
 	private:
 		std::vector<Text> text;
+		std::vector<Action> actions;
 };

@@ -51,5 +51,6 @@ class Game
 		bool mRunning;
 
 		std::unique_ptr<Screen> mScreen;
+		std::map<const char*, Screen*> mScreens;
 };
 

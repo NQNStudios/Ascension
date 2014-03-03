@@ -72,8 +72,10 @@
     <ClCompile Include="Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Action.h" />
     <ClInclude Include="FlagCondition.h" />
     <ClInclude Include="Flags.h" />
+    <ClInclude Include="FlagSet.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="Text.h" />

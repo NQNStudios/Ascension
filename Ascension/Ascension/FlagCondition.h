@@ -12,6 +12,10 @@ struct FlagCondition
 
 		bool operator()()
 		{
+			if (row < 0 || col < 0)
+			{
+				return true;
+			}
 			return flags::getFlag(row, col) == val;
 		}
 
