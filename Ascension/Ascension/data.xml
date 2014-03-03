@@ -1,0 +1,18 @@
+<Screen name="intro1">
+	<Text condition="flag 2 4 1">you should not see this</Text>
+	<Text>You should see this</Text>
+	<Text>And you should see this</Text>
+	<Action text="And you should be able to choose this">intro2</Action>
+	<Action text="or this">intro3</Action>
+</Screen>
+
+<Screen name="intro2">
+	<Text>I see you made it this far</Text>
+	<Action text="Now start over" flagset="2 4 1">intro1</Action>
+	<Action condition="flag 2 4 1" text="Hidden option haha">intro4</Action>
+</Screen>
+
+<Screen name="intro3">
+	<Text>This is also a dead end</Text>
+	<Action text="Now start over">intro1</Action>
+</Screen>

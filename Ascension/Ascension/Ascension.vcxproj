@@ -77,6 +77,10 @@
     <ClInclude Include="Flags.h" />
     <ClInclude Include="FlagSet.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="rapidxml.hpp" />
+    <ClInclude Include="rapidxml_iterators.hpp" />
+    <ClInclude Include="rapidxml_print.hpp" />
+    <ClInclude Include="rapidxml_utils.hpp" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="Text.h" />
   </ItemGroup>

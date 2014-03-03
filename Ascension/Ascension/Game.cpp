@@ -1,6 +1,14 @@
 #include "Game.h"
 
+#include <string>
+#include <iostream>
+#include <sstream>
+#include <stdio.h>
+
 #include <SDL.h>
+
+#include "rapidxml.hpp"
+#include "rapidxml_utils.hpp"
 
 #include "Surface.h"
 #include "FlagCondition.h"
@@ -84,40 +92,132 @@ void Game::LoadContent()
 {
 	flags::init();
 
-	Screen* scr = new Screen();
+	rapidxml::file<> file("data.xml");
+	rapidxml::xml_document<> doc;
+	doc.parse<0>(const_cast<char *>(file.data()));
 
-	Text txt("This text should display", FlagCondition(0, 0, 0));
+	rapidxml::xml_node<>* screenNode = NULL;
+	int i = 0;
+	while (screenNode = doc.first_node("Screen"))
+	{
+		Screen* screen = new Screen();
+		rapidxml::xml_node<>* textNode = NULL;
+		while (textNode = screenNode->first_node("Text"))
+		{
+			rapidxml::xml_attribute<>* conditionAttribute = textNode->first_attribute("condition");
+			
+			FlagCondition condition(-1, -1, 0);
 
-	scr->add(txt);
+			if (conditionAttribute)
+			{
+				char* condcstr = conditionAttribute->value();
 
-	txt = Text("This text should not display", FlagCondition(0, 0, 1));
+				char* word = "";
 
-	scr->add(txt);
+				word = strtok(condcstr, " "); //flag
+				word = strtok(NULL, " "); //row
 
-	txt = Text("This text should display 2 lines down", FlagCondition(1, 0, 0));
+				int row = atoi(word);
 
-	scr->add(txt);
+				word = strtok(NULL, " "); //col
 
-	Action act("First action", FlagCondition(0, 0, 0), FlagSet(-1, -1, 0), "room2");
+				int col = atoi(word);
 
-	scr->addAction(act);
-	mScreens["room1"] = scr;
+				word = strtok(NULL, " "); //value
 
-	txt = Text("This text shouuuld display after you hit '1' the first time", FlagCondition(0, 0, 0));
+				int val = atoi(word);
 
-	scr = new Screen();
-	scr->add(txt);
+				condition = FlagCondition(row, col, val);
+			}
 
-	mScreens["room2"] = scr;
+			const char* text = textNode->value();
 
-	mScreen.reset(mScreens["room1"]);
+			screen->add(Text(text, condition));
+
+			screenNode->remove_first_node();
+
+		}
+
+		rapidxml::xml_node<>* actionNode = NULL;
+		while (actionNode = screenNode->first_node("Action"))
+		{
+			rapidxml::xml_attribute<>* conditionAttribute = actionNode->first_attribute("condition");
+			
+			FlagCondition condition(-1, -1, 0);
+
+			if (conditionAttribute)
+			{
+				char* condcstr = conditionAttribute->value();
+
+				char* word = "";
+
+				word = strtok(condcstr, " "); //flag
+				word = strtok(NULL, " "); //row
+
+				int row = atoi(word);
+
+				word = strtok(NULL, " "); //col
+
+				int col = atoi(word);
+
+				word = strtok(NULL, " "); //value
+
+				int val = atoi(word);
+
+				condition = FlagCondition(row, col, val);
+			}
+
+			const char* text = actionNode->first_attribute("text")->value();
+
+			rapidxml::xml_attribute<>* flagSetAttribute = actionNode->first_attribute("flagset");
+
+			FlagSet flagSet(-1, -1, 0);
+
+			if (flagSetAttribute)
+			{
+				char* setcstr = flagSetAttribute->value();
+
+				char* word = "";
+
+				word = strtok(setcstr, " "); //row
+
+				int row = atoi(word);
+
+				word = strtok(NULL, " "); //col
+
+				int col = atoi(word);
+
+				word = strtok(NULL, " "); //value
+
+				int val = atoi(word);
+
+				flagSet = FlagSet(row, col, val);
+			}
+
+			screen->addAction(Action(text, condition, flagSet, actionNode->value()));
+
+			screenNode->remove_first_node();
+		}
+
+		if (i == 0)
+		{
+			mScreen = screen;
+			++i;
+		}
+
+		mScreens[screenNode->first_attribute("name")->value()] = screen;
+
+		doc.remove_first_node();
+	}
+
+	
 }
 
 void Game::Update(int deltaMS)
 {
 	if (strcmp(flags::getNextRoom(), ""))
 	{
-		mScreen.reset(mScreens[flags::getNextRoom()]);
+		mScreen = mScreens[flags::getNextRoom()];
 		flags::setNextRoom("");
 	}
 
