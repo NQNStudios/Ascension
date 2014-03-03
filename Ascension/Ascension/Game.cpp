@@ -219,6 +219,7 @@ void Game::Update(int deltaMS)
 	const char* theNextRoom = flags::getNextRoom();
 	if (strcmp(theNextRoom, ""))
 	{
+		mScreen->resetAnim();
 		mScreen = mScreens[flags::getNextRoom()];
 		flags::setNextRoom("");
 	}

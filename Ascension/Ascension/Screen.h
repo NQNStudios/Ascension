@@ -11,13 +11,20 @@
 class Screen
 {
 	public:
+		Screen();
+
 		void add(Text text);
 		void addAction(Action action);
 
 		void update(int deltaMS);
 		void handleInput(ascii::Input& input);
 		void draw(ascii::Graphics& graphics);
+
+		void resetAnim();
 	private:
 		std::vector<Text> text;
 		std::vector<Action> actions;
+
+		int revealedChars;
+		int elapsedMS;
 };
