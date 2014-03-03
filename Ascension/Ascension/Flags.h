@@ -24,10 +24,10 @@ class flags
 			return gFlags[r][c];
 		}
 
-		static char* getNextRoom() { return nextRoom; }
-		static void setNextRoom(char* val) { nextRoom = val; }
+		static const char* getNextRoom() { return nextRoom.c_str(); }
+		static void setNextRoom(char* val) { nextRoom = std::string(val); }
 	private:
 		static std::vector<std::vector<int> > gFlags;
 
-		static char* nextRoom;
+		static std::string nextRoom;
 };

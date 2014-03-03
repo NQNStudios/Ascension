@@ -168,7 +168,7 @@ void Game::LoadContent()
 			}
 
 			const char* text = actionNode->first_attribute("text")->value();
-
+			
 			rapidxml::xml_attribute<>* flagSetAttribute = actionNode->first_attribute("flagset");
 
 			FlagSet flagSet(-1, -1, 0);
@@ -194,6 +194,7 @@ void Game::LoadContent()
 				flagSet = FlagSet(row, col, val);
 			}
 
+
 			screen->addAction(Action(text, condition, flagSet, actionNode->value()));
 
 			screenNode->remove_first_node();
@@ -215,7 +216,8 @@ void Game::LoadContent()
 
 void Game::Update(int deltaMS)
 {
-	if (strcmp(flags::getNextRoom(), ""))
+	const char* theNextRoom = flags::getNextRoom();
+	if (strcmp(theNextRoom, ""))
 	{
 		mScreen = mScreens[flags::getNextRoom()];
 		flags::setNextRoom("");

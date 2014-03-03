@@ -9,7 +9,7 @@
 <Screen name="intro2">
 	<Text>I see you made it this far</Text>
 	<Action text="Now start over" flagset="2 4 1">intro1</Action>
-	<Action condition="flag 2 4 1" text="Hidden option haha">intro4</Action>
+	<Action condition="flag 2 4 1" text="Hidden option haha">intro3</Action>
 </Screen>
 
 <Screen name="intro3">

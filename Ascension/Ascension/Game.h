@@ -51,6 +51,6 @@ class Game
 		bool mRunning;
 
 		Screen* mScreen;
-		std::map<const char*, Screen*> mScreens;
+		std::map<std::string, Screen*> mScreens;
 };
 

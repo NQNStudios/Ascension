@@ -21,16 +21,16 @@ struct Action
 		void operator()()
 		{
 			flagSet();
-			flags::setNextRoom(nextRoom);
+			flags::setNextRoom(const_cast<char*>(nextRoom.c_str()));
 		}
 
 		const char* getText()
 		{
-			return text;
+			return text.c_str();
 		}
 	private:
-		const char* text;
+		std::string text;
 		FlagCondition condition;
 		FlagSet flagSet;
-		char* nextRoom;
+		std::string nextRoom;
 };

@@ -28,6 +28,8 @@ void Screen::handleInput(ascii::Input& input)
 			{
 				do
 				{
+					if (idx >= actions.size()) return;
+
 					act = actions[idx];
 					++idx;
 				} while (!act.isEnabled());
