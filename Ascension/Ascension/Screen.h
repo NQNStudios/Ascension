@@ -28,4 +28,5 @@ class Screen
 		int revealedChars;
 		int elapsedMS;
 		int totalMS;
+		bool takeInput;
 };

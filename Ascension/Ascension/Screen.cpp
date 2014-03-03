@@ -4,7 +4,7 @@ const int kRevealMS = 30;
 const int kFlashMS = 400;
 
 Screen::Screen()
-	: revealedChars(0), elapsedMS(0), totalMS(0)
+	: revealedChars(0), elapsedMS(0), totalMS(0), takeInput(false)
 {
 }
 
@@ -32,6 +32,8 @@ void Screen::update(int deltaMS)
 
 void Screen::handleInput(ascii::Input& input)
 {
+	if (!takeInput) return;
+
 	for (int i = (int)SDLK_1; i < (int)SDLK_9; ++i)
 	{
 		if (input.wasKeyPressed((SDL_Keycode)i))
@@ -120,6 +122,8 @@ void Screen::draw(ascii::Graphics& graphics)
 				{
 					int x = graphics.measureStringMultilineX(cutstr.c_str(), destination);
 
+
+					takeInput = true;
 					//x++;
 
 					if (totalMS / kFlashMS  % 2 == 1)
@@ -142,4 +146,5 @@ void Screen::resetAnim()
 	revealedChars = 0;
 	elapsedMS = 0;
 	totalMS = 0;
+	takeInput = false;
 }
