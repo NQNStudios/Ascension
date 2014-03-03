@@ -27,4 +27,5 @@ class Screen
 
 		int revealedChars;
 		int elapsedMS;
+		int totalMS;
 };

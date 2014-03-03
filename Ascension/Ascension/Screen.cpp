@@ -1,9 +1,10 @@
 #include "Screen.h"
 
 const int kRevealMS = 30;
+const int kFlashMS = 400;
 
 Screen::Screen()
-	: revealedChars(0), elapsedMS(0)
+	: revealedChars(0), elapsedMS(0), totalMS(0)
 {
 }
 
@@ -20,6 +21,7 @@ void Screen::addAction(Action action)
 void Screen::update(int deltaMS)
 {
 	elapsedMS += deltaMS;
+	totalMS += deltaMS;
 
 	if (elapsedMS >= kRevealMS)
 	{
@@ -70,7 +72,7 @@ void Screen::draw(ascii::Graphics& graphics)
 
 			graphics.blitStringMultiline(cutstr.c_str(), ascii::Color::Green, destination);
 
-			destination.y += graphics.measureStringMultiline(it->getText(), destination);
+			destination.y += graphics.measureStringMultilineY(it->getText(), destination);
 
 			destination.y++;
 		}
@@ -105,10 +107,32 @@ void Screen::draw(ascii::Graphics& graphics)
 
 			charsLeft -= cutstr.size();
 
+			std::vector<Action>::iterator fin = actions.end();
+			do
+			{
+				--fin;
+			} while (!fin->isEnabled());
+
+			if (it == fin)
+			{
+				//it's the last one
+				if (cutstr.size() == tempstr.size())
+				{
+					int x = graphics.measureStringMultilineX(cutstr.c_str(), destination);
+
+					//x++;
+
+					if (totalMS / kFlashMS  % 2 == 1)
+					{
+						graphics.setBackgroundColor(x, destination.y, ascii::Color::Green);
+					}
+				}
+			}
+
 			++num;
 
 			destination.x -= 2;
-			destination.y += graphics.measureStringMultiline(it->getText(), destination);
+			destination.y += graphics.measureStringMultilineY(it->getText(), destination);
 		}
 	}
 }
@@ -117,4 +141,5 @@ void Screen::resetAnim()
 {
 	revealedChars = 0;
 	elapsedMS = 0;
+	totalMS = 0;
 }
