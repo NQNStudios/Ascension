@@ -1,6 +1,6 @@
 #include "Screen.h"
 
-const int kRevealMS = 30;
+const int kRevealMS = 20;
 const int kFlashMS = 400;
 
 Screen::Screen()

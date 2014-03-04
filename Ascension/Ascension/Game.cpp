@@ -217,6 +217,13 @@ void Game::LoadContent()
 void Game::Update(int deltaMS)
 {
 	const char* theNextRoom = flags::getNextRoom();
+
+	if (!strcmp(theNextRoom, "QUIT"))
+	{
+		Quit();
+		return;
+	}
+
 	if (strcmp(theNextRoom, ""))
 	{
 		mScreen->resetAnim();

@@ -1,18 +1,64 @@
+<Screen name="menu">
+	<Text>This game is a cyberpunk text adventure.</Text>
+	<Text>It was made by Nathaniel Nelson for the Cyberpunk Game Jam using SDL.</Text>
+	<Text>You can find more similar & awesome games at itch.io/jam/cyberpunk-jam</Text>
+	<Text>Play by making choices with the number keys.</Action>
+	<Action text="Play ASCENSION">intro1</Action>
+	<Action text="Quit">QUIT</Action>
+</Screen>
+
 <Screen name="intro1">
-	<Text condition="flag 2 4 1">you should not see this</Text>
-	<Text>You should see this</Text>
-	<Text>And you should see this</Text>
-	<Action text="And you should be able to choose this">intro2</Action>
-	<Action text="or this">intro3</Action>
+	<Text>CHAPTER ONE</Text>
+	<Text>On the day you turn 16, your parents take you to get your first aug.</Text>
+	<Text>Driving to the clinic, you distract yourself from the nervous anticipation by gazing out the window.</Text>
+	<Text>A sad-looking homeless man catches your eye.</Text>
+	<Action text="Look away." flagset="1 1 1">intro2</Action>
+	<Action text="Continue watching.">intro2</Action>
 </Screen>
 
 <Screen name="intro2">
-	<Text>I see you made it this far</Text>
-	<Action text="Now start over" flagset="2 4 1">intro1</Action>
-	<Action condition="flag 2 4 1" text="Hidden option haha">intro3</Action>
+	<Text condition="flag 1 1 1">You avert your gaze and put the man out of mind.</Text>
+	<Text condition="flag 1 1 0">The man briefly meets your gaze. He appears to be a normal, unaugmented human being. You see profound sorrow in his eyes. He is soon far behind you.</Text>
+	<Text>Your thoughts return to your first aug. You haven't made up your mind yet.</Text>
+	<Action text="&quot;Can we go over my options again?&quot;">intro3</Action>
+	<Action text="Ponder silently.">intro4</Action>
 </Screen>
 
 <Screen name="intro3">
-	<Text>This is also a dead end</Text>
-	<Action text="Now start over">intro1</Action>
+	<Text>Your parents outline the choices. Because you are still young, your first augs will be completely temporary and must be replaced as you grow.</Text>
+	<Text>Your mother encourages you to try mental augmentation - you can optimize your internal processing by placing a microchip in your cranium to interface with your brain. This seems dangerous, but she assures you the tech has been well tested and is quite safe.</Text>
+	<Text>Your father suggests a simple strength enhancement. They will use nanobots to boost your muscles' strength and efficiency.</Text>
+	<Text>As an afterthought, they mention the agility aug. You can increase your reaction time, coordination and speed. Your parents aren't sure why you would want these acrobatic advantages.</Text>
+	<Action text="&quot;Got it.&quot;">intro4</Action>
+</Screen>
+
+<Screen name="intro4">
+	<Text>You finally arrive at the clinic.</Text>
+	<Text condition="flag 1 1 0">You step out of the car and onto the pavement. You've never been to this clinic before - it is surprisingly small. Augs are still too expensive for the general population. Maybe always will be.</Text>
+	<Text condition="flag 1 1 1">You step out of the car and onto the pavement. You've never been to this clinic before - it is surprisingly small. Augs are still too expensive for the general population. Maybe always will be. Somehow you doubt it.</Text>
+	<Text>The automatic door slides open and a synthetic voice greets you: &quot;Welcome to the Delta One Augmentation Clinic!&quot;</Text>
+	<Text>Inside, an animated face watches you from a screen in the wall. It asks for your name, and tells you to sit for a few moments until the doctor is ready for you.</Text>
+	<Action text="Take a seat." flagset="1 2 1">intro5</Action>
+	<Action text="Stand by the wall.">intro5</Action>
+</Screen>
+
+<Screen name="intro5">
+	<Text condition="flag 1 2 0">You've sat for long enough today. You stay standing.</Text>
+	<Text condition="flag 1 2 1">You take a seat next to your parents.</Text>
+	<Text condition="flag 1 2 0">In less than 15 minutes, another door opens and the doctor enters. You say hello.</Text>
+	<Text condition="flag 1 2 1">In less than 15 minutes, another door opens and the doctor enters. You stand and say hello.</Text>
+	<Text>Your parents stay back. He leads you to the operating room and asks what kind of augmentation you'll be receiving today.</Text>
+	<Action text="Mental augmentation." flagset="1 3 1">intro6</Action>
+	<Action text="Strength augmentation." flagset="1 3 2">intro6</Action>
+	<Action text="Agility augmentation." flagset="1 3 3">intro6</Action>
+	<Action text="Back out (refuse augmentation)." flagset="1 3 0">intro6</Action>
+</Screen>
+
+<Screen name="intro6">
+	<Text>[You get your augmentation and return home. It hurts at first. If you refuse, your parents are confused & offended.]</Text>
+	<Action text="Next chapter.">2-1</Action>
+</Screen>
+
+<Screen name="2-1">
+	<Text>CHAPTER TWO</Text>
 </Screen>
