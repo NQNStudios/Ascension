@@ -96,9 +96,10 @@ void Game::LoadContent()
 	rapidxml::xml_document<> doc;
 	doc.parse<0>(const_cast<char *>(file.data()));
 
+	rapidxml::xml_node<>* dataNode = doc.first_node("GameData");
 	rapidxml::xml_node<>* screenNode = NULL;
 	int i = 0;
-	while (screenNode = doc.first_node("Screen"))
+	while (screenNode = dataNode->first_node("Screen"))
 	{
 		Screen* screen = new Screen();
 		rapidxml::xml_node<>* textNode = NULL;
@@ -208,7 +209,7 @@ void Game::LoadContent()
 
 		mScreens[screenNode->first_attribute("name")->value()] = screen;
 
-		doc.remove_first_node();
+		dataNode->remove_first_node();
 	}
 
 	
