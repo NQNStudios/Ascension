@@ -88,7 +88,7 @@
     <Text condition="flag 2 1 1">You sit at the terminal.</Text>
     <Action flagset="2 2 1" text="Read the news.">2-2-news</Action>
     <Action condition="flag 2 1 0" flagset="2 1 1" text="Catch up on schoolwork.">2-2</Action>
-    <Action text="Distract yourself with games.">2-2-games</Action>
+    <Action flagset="2 3 1" text="Distract yourself with games.">2-2-games</Action>
   </Screen>
 
   <Screen name="2-2-news">
@@ -96,12 +96,67 @@
     <Text>People are unsure how to respond to such revolutionary changes. Some reject augmentation, and some call for it to be outlawed. There is mistrust of the scientists and companies behind augmentations. &quot;What if they abuse their power?&quot; many ask.</Text>
     <Text>Bugs and cameras keep silent watch over the people. No one knows to whom these eyes belong - most ignore them, but many resent their presence.</Text>
     <Text>Eventually the sun starts to rise. Your terminal interrupts you at 6:00 AM with a reminder to get ready for school.</Text>
-    <Action text="Get ready.">2-3</Action>
+    <Action text="Get ready.">2-3brain</Action>
   </Screen>
 
   <Screen name="2-2-games">
+    <Text>You play an online first-person shooter game but quickly get bored. Your opponents are far too boring: you can anticipate their every move.</Text>
+    <Text>You move on and quickly exhaust the most challenging puzzle games you can find. The solutions come easily.</Text>
+    <Text>One game catches your interest longer than the others: it introduces you to basic programming concepts and challenges you to "hack" targets.</Text>
+    <Text>You don't play it longer than half an hour, but it piques your interest: you explore the web, teaching yourself how to hack for real.</Text>
+    <Text>Eventually the sun starts to rise. Your terminal interrupts you at 6:00 AM with a reminder to get ready for school.</Text>
+    <Action text="Get ready.">2-3brain</Action>
+  </Screen>
+
+  <!-- School with mental aug-->
+  <Screen name="2-3brain">
+    <Text condition="flag 1 3 1">You get weird looks at school. Your friends ask you what happened to your head.</Text>
+    <Action flagset="2 4 1" text="Tell them.">2-3brain2</Action>
+    <Action flagset="2 4 0" text="Avoid the question.">2-3brain2</Action>
+  </Screen>
+
+  <Screen name="2-3brain2">
+    <Text condition="flag 2 4 0">You make up a lie about an accident and a concussion, then change the subject.</Text>
+    <Text condition="flag 2 4 1">You explain your augmentation to your friends and they seem as impressed as they do uncomfortable with the news.</Text>
+    <Text>School is boring. You're relieved when the final class ends.</Text>
+    <Action text="Rush home and continue your studies.">2-4</Action>
   </Screen>
 
   <Screen name="2-3">
+    <Text>School is boring. You're relieved when the final class ends.</Text>
+    <Action text="Go home.">2-4</Action>
+  </Screen>
+
+  <Screen name="2-4">
+    <Text>As augmentation spreads through the city, so does fear.</Text>
+    <Text>Your family comes on hard times as your parents are replaced in their professions by the more heavily augmented. Augs are expensive; they could never have afforded to compete.</Text>
+    <Text>When you turn 18, your options are limited.</Text>
+    <Action text="Leave home.">2-5</Action>
+  </Screen>
+
+  <Screen name="2-5">
+    <Text>You have no choice. Your parents are turning you out. They just don't say it outright.</Text>
+    <Text>Having little to your name, you sleep in the streets while you search for self-sufficiency.</Text>
+    <Action text="Next chapter.">3-1</Action>
+  </Screen>
+
+  <Screen name="3-1">
+    <Text>CHAPTER THREE</Text>
+    <Text condition="2 3 1">You think you can use your special new talents to your advantage. You just need a computer to do it - you haven't had one since you started out on your own.</Text>
+    <Text condition="2 3 1">One day, a perfect opportunity arises. You can't believe your fortunes: someone left a laptop on the train!</Text>
+    <Action condition="2 3 1" text="Take the laptop.">3-2</Action>
+    <Text condition="2 2 1">Your encyclopedic knowledge of current events qualifies you for a career in journalism.</Text>
+    <Text condition="2 2 1">A city newspaper is looking for writers.</Text>
+    <Action condition="2 2 1" text="Apply for the job.">3-2</Action>
+    <Text condition="1 3 2"></Text>
+    <Text condition="1 3 3"></Text>
+  </Screen>
+
+  <Screen name="3-2">
+    <Text condition="1 3 2"></Text>
+  </Screen>
+  
+  <Screen name="4-1">
+    <Text>CHAPTER FOUR</Text>
   </Screen>
 </GameData>
