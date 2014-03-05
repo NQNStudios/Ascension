@@ -1,8 +1,8 @@
 <Screen name="menu">
 	<Text>This game is a cyberpunk text adventure.</Text>
 	<Text>It was made by Nathaniel Nelson for the Cyberpunk Game Jam using SDL.</Text>
-	<Text>You can find more similar & awesome games at itch.io/jam/cyberpunk-jam</Text>
-	<Text>Play by making choices with the number keys.</Action>
+	<Text>You can find more similar &amp; awesome games at itch.io/jam/cyberpunk-jam</Text>
+	<Text>Play by making choices with the number keys.</Text>
 	<Action text="Play ASCENSION">intro1</Action>
 	<Action text="Quit">QUIT</Action>
 </Screen>
@@ -35,7 +35,7 @@
 <Screen name="intro4">
 	<Text>You finally arrive at the clinic.</Text>
 	<Text condition="flag 1 1 0">You step out of the car and onto the pavement. You've never been to this clinic before - it is surprisingly small. Augs are still too expensive for the general population. Maybe always will be.</Text>
-	<Text condition="flag 1 1 1">You step out of the car and onto t he pavement. You've never been to this clinic before - it is surprisingly small. Augs are still too expensive for the general population. Maybe always will be. Somehow you doubt it.</Text>
+	<Text condition="flag 1 1 1">You step out of the car and onto the pavement. You've never been to this clinic before - it is surprisingly small. Augs are still too expensive for the general population. Maybe always will be. Somehow you doubt it.</Text>
 	<Text>The automatic door slides open and a synthetic voice greets you: &quot;Welcome to the Delta One Augmentation Clinic!&quot;</Text>
 	<Text>Inside, an animated face watches you from a screen in the wall. It asks for your name, and tells you to sit for a few moments until the doctor is ready for you.</Text>
 	<Action text="Take a seat." flagset="1 2 1">intro5</Action>

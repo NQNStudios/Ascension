@@ -23,7 +23,7 @@ void Screen::update(int deltaMS)
 	elapsedMS += deltaMS;
 	totalMS += deltaMS;
 
-	if (elapsedMS >= kRevealMS)
+	while (elapsedMS >= kRevealMS)
 	{
 		elapsedMS -= kRevealMS;
 		revealedChars++;
