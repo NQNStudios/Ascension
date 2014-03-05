@@ -28,14 +28,14 @@
 	<Text>Your parents outline the choices. Because you are still young, your first augs will be completely temporary and must be replaced as you grow.</Text>
 	<Text>Your mother encourages you to try mental augmentation - you can optimize your internal processing by placing a microchip in your cranium to interface with your brain. This seems dangerous, but she assures you the tech has been well tested and is quite safe.</Text>
 	<Text>Your father suggests a simple strength enhancement. They will use nanobots to boost your muscles' strength and efficiency.</Text>
-	<Text>As an afterthought, they mention the agility aug. You can increase your reaction time, coordination and speed. Your parents aren't sure why you would want these acrobatic advantages.</Text>
+	<Text>As an afterthought, they mention the agility aug. You can increase your reaction time, coordination and speed. Your parents aren't sure how it works (though you imagine it's similar to the strength enhancement).</Text>
 	<Action text="&quot;Got it.&quot;">intro4</Action>
 </Screen>
 
 <Screen name="intro4">
 	<Text>You finally arrive at the clinic.</Text>
 	<Text condition="flag 1 1 0">You step out of the car and onto the pavement. You've never been to this clinic before - it is surprisingly small. Augs are still too expensive for the general population. Maybe always will be.</Text>
-	<Text condition="flag 1 1 1">You step out of the car and onto the pavement. You've never been to this clinic before - it is surprisingly small. Augs are still too expensive for the general population. Maybe always will be. Somehow you doubt it.</Text>
+	<Text condition="flag 1 1 1">You step out of the car and onto t he pavement. You've never been to this clinic before - it is surprisingly small. Augs are still too expensive for the general population. Maybe always will be. Somehow you doubt it.</Text>
 	<Text>The automatic door slides open and a synthetic voice greets you: &quot;Welcome to the Delta One Augmentation Clinic!&quot;</Text>
 	<Text>Inside, an animated face watches you from a screen in the wall. It asks for your name, and tells you to sit for a few moments until the doctor is ready for you.</Text>
 	<Action text="Take a seat." flagset="1 2 1">intro5</Action>
@@ -51,14 +51,55 @@
 	<Action text="Mental augmentation." flagset="1 3 1">intro6</Action>
 	<Action text="Strength augmentation." flagset="1 3 2">intro6</Action>
 	<Action text="Agility augmentation." flagset="1 3 3">intro6</Action>
-	<Action text="Back out (refuse augmentation)." flagset="1 3 0">intro6</Action>
+	<!--Action text="Back out (refuse augmentation)." flagset="1 3 0">intro6-refusal</Action-->
 </Screen>
 
 <Screen name="intro6">
-	<Text>[You get your augmentation and return home. It hurts at first. If you refuse, your parents are confused & offended.]</Text>
+	<Text>The doctor notes your choice and has you lay on the operating table. You inhale a pleasant-smelling gas and drift off.</Text>
+	<Action text="...">intro7</Action>
+</Screen>
+
+<Screen name="intro7">
+	<Text>You drift back into consciousness after the operation is complete.</Text>
+	<Text condition="flag 1 3 1">You reach up and feel your head - it's wrapped in bandages and your hair has been shaved.</Text>
+	<Text condition="flag 1 3 2">You don't actually notice anything different about your body.</Text>
+	<Text condition="flag 1 3 3">You don't actually notice anything different about your body.</Text>
+	<Text>You rejoin your parents and drive home.</Text>
 	<Action text="Next chapter.">2-1</Action>
 </Screen>
 
 <Screen name="2-1">
 	<Text>CHAPTER TWO</Text>
+	<Text>You wake up the next morning to soft music as the sun's first rays shine in through the window. Your home computer system pumps the sound in every morning at 6:00 AM.</Text>
+	<Text condition="flag 1 3 1">You have a splitting headache. You feel your bandages - everything seems normal.</Text>
+	<Text condition="flag 1 3 2">You feel great.</Text>
+	<Text condition="flag 1 3 3">You feel great.</Text>
+	<Action condition="flag 1 3 1" text="Go back to sleep.">2-2</Action>
+	<Action condition="flag 1 3 2" text="Get ready for school.">2-3</Action>
+	<Action condition="flag 1 3 3" text="Get ready for school.">2-3</Action>
+</Screen>
+
+<Screen name="2-2">
+	<Text condition="flag 2 1 0">The pain is almost unbearable. You take some sleeping pills, close the blinds, and return to bed.</Text>
+	<Text condition="flag 2 1 0">When you awake, the day has already gone by. It's dark outside. The pain has been reduced to a dull throb.</Text>
+	<Text condition="flag 2 1 0">Feeling awake and alert, you leave bed and sit at the computer terminal.</Text>
+	<Text condition="flag 2 1 1">You finish two school days worth of work in under an hour.</Text>
+	<Text condition="flag 2 1 1">You sit at the terminal.</Text>
+	<Action flagset="2 2 1" text="Read the news.">2-2-news</Action>
+	<Action condition="flag 2 1 0" flagset="2 1 1" text="Catch up on schoolwork.">2-2</Action>
+	<Action text="Distract yourself with games.">2-2-games</Action>
+</Screen>
+
+<Screen name="2-2-news">
+	<Text>You read for hours about the state of the world. Augmentation technology is rolling out all over the world, slowly. The wealthiest cities in the world embrace it rapidly. Many countries have yet to build a single augmentation clinic.</Text>
+	<Text>People are unsure how to respond to such revolutionary changes. Some reject augmentation, and some call for it to be outlawed. There is mistrust of the scientists and companies behind augmentations. &quot;What if they abuse their power?&quot; many ask.</Text>
+	<Text>Bugs and cameras keep silent watch over the people. No one knows to whom these eyes belong - most ignore them, but many resent their presence.</Text>
+	<Text>Eventually the sun starts to rise. Your terminal interrupts you at 6:00 AM with a reminder to get ready for school.</Text>
+	<Action text="Get ready.">2-3</Action>
+</Screen>
+
+<Screen name="2-2-games">
+</Screen>
+
+<Screen name="2-3">
 </Screen>
