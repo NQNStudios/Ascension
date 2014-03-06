@@ -142,18 +142,18 @@
 
   <Screen name="3-1">
     <Text>CHAPTER THREE</Text>
-    <Text condition="2 3 1">You think you can use your special new talents to your advantage. You just need a computer to do it - you haven't had one since you started out on your own.</Text>
-    <Text condition="2 3 1">One day, a perfect opportunity arises. You can't believe your fortunes: someone left a laptop on the train!</Text>
-    <Action condition="2 3 1" text="Take the laptop.">3-2</Action>
-    <Text condition="2 2 1">Your encyclopedic knowledge of current events qualifies you for a career in journalism.</Text>
-    <Text condition="2 2 1">A city newspaper is looking for writers.</Text>
-    <Action condition="2 2 1" text="Apply for the job.">3-2</Action>
-    <Text condition="1 3 2"></Text>
-    <Text condition="1 3 3"></Text>
+    <Text condition="flag 2 3 1">You think you can use your special new talents to your advantage. You just need a computer to do it - you haven't had one since you started out on your own.</Text>
+    <Text condition="flag 2 3 1">One day, a perfect opportunity arises. You can't believe your fortunes: someone left a laptop on the train!</Text>
+    <Text condition="flag 2 2 1">Your encyclopedic knowledge of current events qualifies you for a career in journalism.</Text>
+    <Text condition="flag 2 2 1">A city newspaper is looking for writers.</Text>
+    <Text condition="flag 1 3 2"></Text>
+    <Text condition="flag 1 3 3"></Text>
+    <Action condition="flag 2 3 1" text="Take the laptop.">3-2</Action>
+    <Action condition="flag 2 2 1" text="Apply for the job.">3-2</Action>
   </Screen>
 
   <Screen name="3-2">
-    <Text condition="1 3 2"></Text>
+    <Text condition="flag 1 3 2"></Text>
   </Screen>
   
   <Screen name="4-1">
