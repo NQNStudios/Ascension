@@ -225,6 +225,16 @@ void Game::Update(int deltaMS)
 		return;
 	}
 
+	if (!strcmp(theNextRoom, "RESET"))
+	{
+		mScreen->resetAnim();
+
+		flags::resetFlags();
+
+		mScreen = mScreens["menu"];
+		flags::setNextRoom("");
+	}
+
 	if (strcmp(theNextRoom, ""))
 	{
 		mScreen->resetAnim();

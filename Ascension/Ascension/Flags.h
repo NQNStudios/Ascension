@@ -24,6 +24,17 @@ class flags
 			return gFlags[r][c];
 		}
 
+		static inline void resetFlags()
+		{
+			for (int r = 0; r < kFlagRows; ++r)
+			{
+				for (int c = 0; c < kFlagColumns; ++c)
+				{
+					gFlags[r][c] = 0;
+				}
+			}
+		}
+
 		static const char* getNextRoom() { return nextRoom.c_str(); }
 		static void setNextRoom(char* val) { nextRoom = std::string(val); }
 	private:
