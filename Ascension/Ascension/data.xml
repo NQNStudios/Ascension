@@ -144,16 +144,48 @@
     <Text>CHAPTER THREE</Text>
     <Text condition="flag 2 3 1">You think you can use your special new talents to your advantage. You just need a computer to do it - you haven't had one since you started out on your own.</Text>
     <Text condition="flag 2 3 1">One day, a perfect opportunity arises. You can't believe your fortunes: someone left a laptop on the train!</Text>
-    <Text condition="flag 2 2 1">Your encyclopedic knowledge of current events qualifies you for a career in journalism.</Text>
+    
+    <Text condition="flag 2 2 1">With your encyclopedic knowledge of current events, you imagine you could pursue a career in journalism.</Text>
     <Text condition="flag 2 2 1">A city newspaper is looking for writers.</Text>
+    
     <Text condition="flag 1 3 2"></Text>
+    
     <Text condition="flag 1 3 3"></Text>
+    
     <Action condition="flag 2 3 1" text="Take the laptop.">3-2</Action>
     <Action condition="flag 2 2 1" text="Apply for the job.">3-2</Action>
+    <Action condition="flag 1 3 2" text="">3-2</Action>
+    <Action condition="flag 1 3 3" text="">3-2</Action>
   </Screen>
 
   <Screen name="3-2">
+    <Text condition="flag 2 3 1">You make a talented hacker. You learn to make easy credits by compromising computers and extorting ransom from their owners.</Text>
+    <Text condition="flag 2 3 1">Moving up, you start to hack banks and pilfer discrete sums of credit. A little at a time, disguised as a legitimate transaction, usually goes unnoticed.</Text>
+
+    <Text condition="flag 2 2 1">You secure an interview at the paper. You look pretty disheveled, so you find a homeless shelter to clean yourself up before you go.</Text>
+    <Text condition="flag 2 2 1">You don't own any nice clothes, but you wear the best you have. Luckily you make a good impression despite your apparel. You get the job.</Text>
+
     <Text condition="flag 1 3 2"></Text>
+    <Text condition="flag 1 3 3"></Text>
+    
+    <Text>You build a relatively stable life for yourself, living in a highrise apartment with a view of the city.</Text>
+
+    <Text>After a year, the time comes to have your augs replaced.</Text>
+    <Action text="Take a visit to the clinic.">3-3</Action>
+  </Screen>
+
+  <Screen name="3-3">
+    <Text>You go to a different clinic - a much larger one. Times have changed, and you can find a clinic in almost every district of the city.</Text>
+    <Text>This time you wait longer than an hour in a crowded room. Most of those around you have at least one aug, and some have several.</Text>
+    <Text>A man with mechanical eyes strikes up a conversation with you. He claims a company is creating a fully simulated paradise. You can live in this virtual world until you die, abandoning tangible reality and forgetting your life forever.</Text>
+    <Text>You're skeptical about this idea. You don't get to discuss it for long, though - you're finally called in.</Text>
+    <Action text="Enter the operating room.">3-4</Action>
+  </Screen>
+
+  <Screen name="3-4">
+    <Text>The tech has gotten much, much better. You treat yourself to an upgrade.</Text>
+    <Text>Everything goes smoothly during the surgery. You head home.</Text>
+    <Action text="Next chapter.">4-1</Action>
   </Screen>
   
   <Screen name="4-1">
