@@ -21,6 +21,7 @@ class Screen
 		void draw(ascii::Graphics& graphics);
 
 		void resetAnim();
+		void skipAnim();
 	private:
 		std::vector<Text> text;
 		std::vector<Action> actions;

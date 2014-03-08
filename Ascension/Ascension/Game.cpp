@@ -238,6 +238,11 @@ void Game::Update(int deltaMS)
 void Game::HandleInput(ascii::Input& input)
 {
 	mScreen->handleInput(input);
+
+	if (input.wasKeyPressed(SDLK_SPACE))
+	{
+		mScreen->skipAnim();
+	}
 }
 
 void Game::Draw(ascii::Graphics& graphics)

@@ -148,3 +148,8 @@ void Screen::resetAnim()
 	totalMS = 0;
 	takeInput = false;
 }
+
+void Screen::skipAnim()
+{
+	revealedChars = 74 * 21;
+}
