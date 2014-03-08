@@ -21,7 +21,7 @@ const int kFPS = 60;
 const int kMaxFrameTime = 5 * 1000 / 60;
 
 Game::Game()
-	: mRunning(false)
+	: mRunning(false), surface(NULL)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -212,7 +212,7 @@ void Game::LoadContent()
 		dataNode->remove_first_node();
 	}
 
-	
+	surface = ascii::Surface::FromFile("ART.txt");
 }
 
 void Game::Update(int deltaMS)
@@ -263,6 +263,8 @@ void Game::Draw(ascii::Graphics& graphics)
 	graphics.blitString(kTitle, ascii::Color::Black, ascii::Graphics::kBufferWidth / 2 - strlen(kTitle) / 2, 0);
 
 	mScreen->draw(graphics);
+
+	//graphics.blitSurface(surface, 0, 0);
 
 	graphics.update();
 }

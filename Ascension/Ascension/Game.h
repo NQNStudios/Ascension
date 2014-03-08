@@ -52,5 +52,7 @@ class Game
 
 		Screen* mScreen;
 		std::map<std::string, Screen*> mScreens;
+
+		ascii::Surface* surface;
 };
 
