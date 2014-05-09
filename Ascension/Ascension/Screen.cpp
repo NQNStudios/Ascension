@@ -23,16 +23,24 @@ void Screen::update(int deltaMS)
 	elapsedMS += deltaMS;
 	totalMS += deltaMS;
 
-	while (elapsedMS >= kRevealMS)
-	{
-		elapsedMS -= kRevealMS;
-		revealedChars++;
-	}
+	//while (elapsedMS >= kRevealMS)
+	//{
+	//	elapsedMS -= kRevealMS;
+	//	revealedChars++;
+	//}
 }
 
 void Screen::handleInput(ascii::Input& input)
 {
-	if (!takeInput) return;
+	//if (!takeInput) return;
+
+	for (int i = (int)SDLK_a; i < (int)SDLK_z; ++i)
+	{
+		if (input.wasKeyPressed((SDL_Keycode)i))
+		{
+			revealedChars++;
+		}
+	}
 
 	for (int i = (int)SDLK_1; i < (int)SDLK_9; ++i)
 	{

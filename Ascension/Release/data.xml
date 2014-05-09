@@ -1,0 +1,251 @@
+<GameData>
+  <Screen name="menu">
+    <Text>This game is a cyberpunk text adventure.</Text>
+    <Text>It was made by Nathaniel Nelson (nathanielnelson.com) for the Cyberpunk Game Jam using SDL.</Text>
+    <Text>You can find more similar &amp; awesome games at itch.io/jam/cyberpunk-jam.</Text>
+    <Text>Play by making choices with the number keys. Press SPACE to skip the animation and make all text appear.</Text>
+    <Action text="Play ASCENSION">intro1</Action>
+    <Action text="Quit.">QUIT</Action>
+  </Screen>
+
+  <Screen name="intro1">
+    <Text>CHAPTER ONE</Text>
+    <Text>On the day you turn 16, your parents take you to get your first aug.</Text>
+    <Text>Driving to the clinic, you distract yourself from the nervous anticipation by gazing out the window.</Text>
+    <Text>A sad-looking homeless man catches your eye.</Text>
+    <Action text="Look away." flagset="1 1 1">intro2</Action>
+    <Action text="Continue watching.">intro2</Action>
+  </Screen>
+
+  <Screen name="intro2">
+    <Text condition="flag 1 1 1">You avert your gaze and put the man out of mind.</Text>
+    <Text condition="flag 1 1 0">The man briefly meets your gaze. He appears to be a normal, unaugmented human being. You see profound sorrow in his eyes. He is soon far behind you.</Text>
+    <Text>Your thoughts return to your first aug. You haven't made up your mind yet.</Text>
+    <Action text="&quot;Can we go over my options again?&quot;">intro3</Action>
+    <Action text="Ponder silently.">intro4</Action>
+  </Screen>
+
+  <Screen name="intro3">
+    <Text>Your parents outline the choices. Because you are still young, your first augs will be completely temporary and must be replaced as you grow.</Text>
+    <Text>Your mother encourages you to try mental augmentation - you can optimize your internal processing by placing a microchip in your cranium to interface with your brain. This seems dangerous, but she assures you the tech has been well tested and is quite safe.</Text>
+    <Text>Your father suggests a simple strength enhancement. They will use nanobots to boost your muscles' strength and efficiency.</Text>
+    <Text>As an afterthought, they mention the agility aug. You can increase your reaction time, coordination and speed. Your parents aren't sure how it works (though you imagine it's similar to the strength enhancement).</Text>
+    <Action text="&quot;Got it.&quot;">intro4</Action>
+  </Screen>
+
+  <Screen name="intro4">
+    <Text>You finally arrive at the clinic.</Text>
+    <Text condition="flag 1 1 0">You step out of the car and onto the pavement. You've never been to this clinic before - it is surprisingly small. Augs are still too expensive for the general population. Maybe always will be.</Text>
+    <Text condition="flag 1 1 1">You step out of the car and onto the pavement. You've never been to this clinic before - it is surprisingly small. Augs are still too expensive for the general population. Maybe always will be. Somehow you doubt it.</Text>
+    <Text>The automatic door slides open and a synthetic voice greets you: &quot;Welcome to the Delta One Augmentation Clinic!&quot;</Text>
+    <Text>Inside, an animated face watches you from a screen in the wall. It asks for your name, and tells you to sit for a few moments until the doctor is ready for you.</Text>
+    <Action text="Take a seat." flagset="1 2 1">intro5</Action>
+    <Action text="Stand by the wall.">intro5</Action>
+  </Screen>
+
+  <Screen name="intro5">
+    <Text condition="flag 1 2 0">You've sat for long enough today. You stay standing.</Text>
+    <Text condition="flag 1 2 1">You take a seat next to your parents.</Text>
+    <Text condition="flag 1 2 0">In less than 15 minutes, another door opens and the doctor enters. You say hello.</Text>
+    <Text condition="flag 1 2 1">In less than 15 minutes, another door opens and the doctor enters. You stand and say hello.</Text>
+    <Text>Your parents stay back. He leads you to the operating room and asks what kind of augmentation you'll be receiving today.</Text>
+    <Action text="Mental augmentation." flagset="1 3 1">intro6</Action>
+    <Action text="Strength augmentation." flagset="1 3 2">intro6</Action>
+    <Action text="Agility augmentation." flagset="1 3 3">intro6</Action>
+    <!--Action text="Back out (refuse augmentation)." flagset="1 3 0">intro6-refusal</Action-->
+  </Screen>
+
+  <Screen name="intro6">
+    <Text>The doctor notes your choice and has you lay on the operating table. You inhale a pleasant-smelling gas and drift off.</Text>
+    <Action text="...">intro7</Action>
+  </Screen>
+
+  <Screen name="intro7">
+    <Text>You drift back into consciousness after the operation is complete.</Text>
+    <Text condition="flag 1 3 1">You reach up and feel your head - it's wrapped in bandages and your hair has been shaved.</Text>
+    <Text condition="flag 1 3 2">You don't actually notice anything different about your body.</Text>
+    <Text condition="flag 1 3 3">You don't actually notice anything different about your body.</Text>
+    <Text>You rejoin your parents and drive home.</Text>
+    <Action text="Next chapter.">2-1</Action>
+  </Screen>
+
+  <Screen name="2-1">
+    <Text>CHAPTER TWO</Text>
+    <Text>You wake up the next morning to soft music as the sun's first rays shine in through the window. Your home computer system pumps the sound in every morning at 6:00 AM.</Text>
+    <Text condition="flag 1 3 1">You have a splitting headache. You feel your bandages - everything seems normal.</Text>
+    <Text condition="flag 1 3 2">You feel great.</Text>
+    <Text condition="flag 1 3 3">You feel great.</Text>
+    <Action condition="flag 1 3 1" text="Go back to sleep.">2-2</Action>
+    <Action condition="flag 1 3 2" text="Get ready for school.">2-3</Action>
+    <Action condition="flag 1 3 3" text="Get ready for school.">2-3</Action>
+  </Screen>
+
+  <Screen name="2-2">
+    <Text condition="flag 2 1 0">The pain is almost unbearable. You take some sleeping pills, close the blinds, and return to bed.</Text>
+    <Text condition="flag 2 1 0">When you awake, the day has already gone by. It's dark outside. The pain has been reduced to a dull throb.</Text>
+    <Text condition="flag 2 1 0">Feeling awake and alert, you leave bed and sit at the computer terminal.</Text>
+    <Text condition="flag 2 1 1">You finish two school days worth of work in under an hour.</Text>
+    <Text condition="flag 2 1 1">You sit at the terminal.</Text>
+    <Action flagset="2 2 1" text="Read the news.">2-2-news</Action>
+    <Action condition="flag 2 1 0" flagset="2 1 1" text="Catch up on schoolwork.">2-2</Action>
+    <Action flagset="2 3 1" text="Distract yourself with games.">2-2-games</Action>
+  </Screen>
+
+  <Screen name="2-2-news">
+    <Text>You read for hours about the state of the world. Augmentation technology is rolling out all over the world, slowly. The wealthiest cities in the world embrace it rapidly. Many countries have yet to build a single augmentation clinic.</Text>
+    <Text>People are unsure how to respond to such revolutionary changes. Some reject augmentation, and some call for it to be outlawed. There is mistrust of the scientists and companies behind augmentations. &quot;What if they abuse their power?&quot; many ask.</Text>
+    <Text>Bugs and cameras keep silent watch over the people. No one knows to whom these eyes belong - most ignore them, but many resent their presence.</Text>
+    <Text>Eventually the sun starts to rise. Your terminal interrupts you at 6:00 AM with a reminder to get ready for school.</Text>
+    <Action text="Get ready.">2-3brain</Action>
+  </Screen>
+
+  <Screen name="2-2-games">
+    <Text>You play an online first-person shooter game but quickly get bored. Your opponents are far too boring: you can anticipate their every move.</Text>
+    <Text>You move on and quickly exhaust the most challenging puzzle games you can find. The solutions come easily.</Text>
+    <Text>One game catches your interest longer than the others: it introduces you to basic programming concepts and challenges you to "hack" targets.</Text>
+    <Text>You don't play it longer than half an hour, but it piques your interest: you explore the web, teaching yourself how to hack for real.</Text>
+    <Text>Eventually the sun starts to rise. Your terminal interrupts you at 6:00 AM with a reminder to get ready for school.</Text>
+    <Action text="Get ready.">2-3brain</Action>
+  </Screen>
+
+  <!-- School with mental aug-->
+  <Screen name="2-3brain">
+    <Text condition="flag 1 3 1">You get weird looks at school. Your friends ask you what happened to your head.</Text>
+    <Action flagset="2 4 1" text="Tell them.">2-3brain2</Action>
+    <Action flagset="2 4 0" text="Avoid the question.">2-3brain2</Action>
+  </Screen>
+
+  <Screen name="2-3brain2">
+    <Text condition="flag 2 4 0">You make up a lie about an accident and a concussion, then change the subject.</Text>
+    <Text condition="flag 2 4 1">You explain your augmentation to your friends and they seem as impressed as they do uncomfortable with the news.</Text>
+    <Text>School is boring. You're relieved when the final class ends.</Text>
+    <Action text="Rush home and continue your studies.">2-4</Action>
+  </Screen>
+
+  <Screen name="2-3">
+    <Text>School is boring. You're relieved when the final class ends.</Text>
+    <Action text="Go home.">2-4</Action>
+  </Screen>
+
+  <Screen name="2-4">
+    <Text>As augmentation spreads through the city, so does fear.</Text>
+    <Text>Your family comes on hard times as your parents are replaced in their professions by the more heavily augmented. Augs are expensive; they could never have afforded to compete.</Text>
+    <Text>When you turn 18, your options are limited.</Text>
+    <Action text="Leave home.">2-5</Action>
+  </Screen>
+
+  <Screen name="2-5">
+    <Text>You have no choice. Your parents are turning you out. They just don't say it outright.</Text>
+    <Text>Having little to your name, you sleep in the streets while you search for self-sufficiency.</Text>
+    <Action condition="flag 1 3 1" text="Next chapter.">3-1</Action>
+    <Action condition="flag 1 3 2" text="Next chapter.">3-1</Action>
+    <Action condition="flag 1 3 3" text="Next chapter.">3-2</Action>
+  </Screen>
+
+  <Screen name="3-1">
+    <Text>CHAPTER THREE</Text>
+    <Text condition="flag 2 3 1">You think you can use your special new talents to your advantage. You just need a computer to do it - you haven't had one since you started out on your own.</Text>
+    <Text condition="flag 2 3 1">One day, a perfect opportunity arises. You can't believe your fortunes: someone left a laptop on the train!</Text>
+    
+    <Text condition="flag 2 2 1">With your encyclopedic knowledge of current events, you imagine you could pursue a career in journalism.</Text>
+    <Text condition="flag 2 2 1">A city newspaper is looking for writers.</Text>
+    
+    <Text condition="flag 1 3 2">Work is difficult to find without any real talents to speak of. You find a few odd jobs, barely scraping by and sometimes finding refuge in homeless shelters.</Text>
+    <Text condition="flag 1 3 2">After a few hard months you find steady employment operating and maintaining machinery in a mining facility.</Text>
+    <Text condition="flag 1 3 2">The pay is enough to survive, but you find yourself struggling to advance in the world.</Text>
+    
+    <Action condition="flag 2 3 1" text="Take the laptop.">3-2</Action>
+    <Action condition="flag 2 2 1" text="Apply for the job.">3-2</Action>
+    <Action condition="flag 1 3 2" text="Keep on living.">3-2</Action>
+    <Action condition="flag 1 3 3" text="">3-2</Action>
+  </Screen>
+
+  <Screen name="3-2">
+    <Text condition="flag 2 3 1">You make a talented hacker. You learn to make easy credits by compromising computers and extorting ransom from their owners.</Text>
+    <Text condition="flag 2 3 1">Moving up, you start to hack banks and pilfer discrete sums of credit. A little at a time, disguised as a legitimate transaction, usually goes unnoticed.</Text>
+
+    <Text condition="flag 2 2 1">You secure an interview at the paper. You look pretty disheveled, so you find a homeless shelter to clean yourself up before you go.</Text>
+    <Text condition="flag 2 2 1">You don't own any nice clothes, but you wear the best you have. Luckily you make a good impression despite your apparel. You get the job.</Text>
+
+    <Text condition="flag 1 3 2">One of your coworkers mentions a rumor he heard - he claims a company is creating a fully simulated paradise. You can live in this virtual world until you die, abandoning tangible reality and forgetting your life forever.</Text>
+    <Text condition="flag 1 3 2">It's nothing but a pipe dream. Even if this simulation exists, it could never be for people like you.</Text>
+    <Text condition="flag 1 3 2">The time comes for you to have your augs replaced, but you can't afford it. You don't know what will happen to you if you keep your old augs, but you have no choice. Your strength is crucial to your work in the mines.</Text>
+    
+    <Text condition="flag 1 3 3">Your acrobatic talents make you perfectly suited for thievery.</Text>
+    <Text condition="flag 1 3 3">You begin your new career as a pickpocket, stealing a little at a time and risking little.</Text>
+    <Text condition="flag 1 3 3">You move on to higher profile robberies, infiltrating banks, museums - anywhere you can find valuable items and turn a profit.</Text>
+    
+    <Text condition="flag 1 3 1">You build a relatively stable life for yourself, living in a highrise apartment with a view of the city.</Text>
+    <Text condition="flag 1 3 3">You build a relatively stable life for yourself, living in a highrise apartment with a view of the city.</Text>
+
+    <Text condition="flag 1 3 1">After a year, the time comes to have your augs replaced.</Text>
+    <Text condition="flag 1 3 3">After a year, the time comes to have your augs replaced.</Text>
+    
+    <Action condition="flag 1 3 1" text="Take a visit to the clinic.">3-3</Action>
+    <Action condition="flag 1 3 3" text="Take a visit to the clinic.">3-3</Action>
+    
+    <Action condition="flag 1 3 2" text="Next chapter.">4-1</Action>
+  </Screen>
+
+  <Screen name="3-3">
+    <Text>You go to a different clinic - a much larger one. Times have changed, and you can find a clinic in almost every district of the city.</Text>
+    <Text>This time you wait longer than an hour in a crowded room. Most of those around you have at least one aug, and some have several.</Text>
+    <Text>A man with mechanical eyes strikes up a conversation with you. He claims a company is creating a fully simulated paradise. You can live in this virtual world until you die, abandoning tangible reality and forgetting your life forever.</Text>
+    <Text>You're skeptical about this idea. You don't get to discuss it for long, though - you're finally called in.</Text>
+    <Action text="Enter the operating room.">3-4</Action>
+  </Screen>
+
+  <Screen name="3-4">
+    <Text>The tech has gotten much, much better. You treat yourself to an upgrade.</Text>
+    <Text>Everything goes smoothly during the surgery. You head home.</Text>
+    <Action text="Next chapter.">4-1</Action>
+  </Screen>
+  
+  <Screen name="4-1">
+    <Text>CHAPTER FOUR</Text>
+    <Text>Paradise is real, and many have already ascended.</Text>
+    <Text>The rich and powerful flock to the terminals and buy their way in. It's very exclusive and expensive.</Text>
+    <Text>You watch as time passes and the crowds on the streets keep thinning.</Text>
+    <Text>You wonder where their bodies go.</Text>
+    <Action text="Keep waiting.">4-2</Action>
+  </Screen>
+
+  <Screen name="4-2">
+    <Text condition="flag 1 3 2">You can't afford to enter Paradise, and you know you never will.</Text>
+    <Text condition="flag 1 3 2">You watch in sorrow as humanity abandons the real world, favoring pleasant fantasy.</Text>
+
+    <Text condition="flag 1 3 1">You've got a fair amount of money in the bank. You could join humanity's elite in the new world, if you wanted to.</Text>
+    <Text condition="flag 1 3 3">You've got a fair amount of money in the bank. You could join humanity's elite in the new world, if you wanted to.</Text>
+
+    <Action condition="flag 1 3 1" text="Ascend to paradise.">4paradise</Action>
+    <Action condition="flag 1 3 3" text="Ascend to paradise.">4paradise</Action>
+    <Action text="Put an end to it all.">4suicide</Action>
+  </Screen>
+
+  <Screen name="4suicide">
+    <Text condition="flag 1 3 2">You check into a room on the top floor of the city's largest hotel. It's not for sleeping.</Text>
+    <Text condition="flag 1 3 2">You spring the extra credits for a room with a balcony. You take one more long look at the cityscape below you before you vault the banister and fly into its embrace.</Text>
+
+    <Text condition="flag 1 3 1">You ride the elevator up to your highrise apartment for the final time.</Text>
+    <Text condition="flag 1 3 1">You've watched humanity abandon the real world, and it makes you sick.</Text>
+    <Text condition="flag 1 3 1">You reach the top, throw open your apartment door, and fling yourself through the window.</Text>
+
+    <Text condition="flag 1 3 3">You ride the elevator up to your highrise apartment for the final time.</Text>
+    <Text condition="flag 1 3 3">You've watched humanity abandon the real world, and it makes you sick.</Text>
+    <Text condition="flag 1 3 3">You reach the top, throw open your apartment door, and fling yourself through the window.</Text>
+
+    <Text>THE END</Text>
+    <Action text="Return to the menu.">RESET</Action>
+    <Action text="Quit.">QUIT</Action>
+  </Screen>
+
+  <Screen name="4paradise">
+    <Text>They take you into a room lined with racks of servers and racks of person-shaped pods.</Text>
+    <Text>There's an open pod at the end of the line. This one must be for you.</Text>
+    <Text>You lay down for the last time, and share a final look with the technician before he closes the lid, sealing you in forever.</Text>
+    <Text>Paradise is glorious...</Text>
+    <Text>THE END</Text>
+    <Action text="Return to the menu.">RESET</Action>
+    <Action text="Quit.">QUIT</Action>
+  </Screen>
+</GameData>

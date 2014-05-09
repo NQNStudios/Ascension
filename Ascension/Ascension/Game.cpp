@@ -23,13 +23,18 @@ const int kMaxFrameTime = 5 * 1000 / 60;
 Game::Game()
 	: mRunning(false), surface(NULL)
 {
+	//std::cout << "Initializing SDL" << std::endl;
 	SDL_Init(SDL_INIT_EVERYTHING);
+	//std::cout << "SDL initialized" << std::endl;
 
+	//std::cout << "Loading content" << std::endl;
 	LoadContent();
+	//std::cout << "Content loaded" << std::endl;
 }
 
 Game::~Game()
 {
+	//std::cout << "Quitting SDL" << std::endl;
 	SDL_Quit();
 }
 
@@ -99,12 +104,18 @@ void Game::LoadContent()
 	rapidxml::xml_node<>* dataNode = doc.first_node("GameData");
 	rapidxml::xml_node<>* screenNode = NULL;
 	int i = 0;
+
 	while (screenNode = dataNode->first_node("Screen"))
 	{
 		Screen* screen = new Screen();
 		rapidxml::xml_node<>* textNode = NULL;
+
+		//std::cout << "Outer loop node: " << screenNode->value() << std::endl;
+
 		while (textNode = screenNode->first_node("Text"))
 		{
+			//std::cout << "Inner loop node: " << textNode->value() << std::endl;
+
 			rapidxml::xml_attribute<>* conditionAttribute = textNode->first_attribute("condition");
 			
 			FlagCondition condition(-1, -1, 0);
@@ -211,8 +222,6 @@ void Game::LoadContent()
 
 		dataNode->remove_first_node();
 	}
-
-	surface = ascii::Surface::FromFile("ART.txt");
 }
 
 void Game::Update(int deltaMS)
